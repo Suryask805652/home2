@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | STACKLY ARCHITECH STUDIO</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg1: #06080f;
+      --bg2: #0b1220;
+      --accent: #4ff3ff;
+      --pink: #ff2d7f;
+      --white: #e9f7ff;
+      --glass: rgba(255, 255, 255, 0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at top, var(--bg2), var(--bg1));
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* HEADER WRAPPER */
+    .header {
+      width: 100%;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 0 20px rgba(0,255,255,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    /* LEFT LOGO */
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.7rem;
+      font-weight: 700;
+    }
+
+    .logo-area img {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      box-shadow: 0 0 18px #02090a90;
+    }
+
+    .logo-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 1px;
+    }
+
+    /* MENU RIGHT SIDE */
+    nav {
+      display: flex;
+      gap: 35px;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--white);
+      font-weight: 500;
+      font-size: 1rem;
+      transition: 0.3s;
+      padding: 6px 12px;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--accent);
+      text-shadow: 0 0 10px var(--accent);
+    }
+
+    /* MOBILE MENU */
+    .hamburger {
+      display: none;
+      font-size: 28px;
+      color: var(--accent);
+      cursor: pointer;
+    }
+
+    @media (max-width: 850px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        background: rgba(255,255,255,0.04);
+        backdrop-filter: blur(20px);
+        padding: 20px 0;
+        margin-top: 10px;
+        border-radius: 10px;
+      }
+
+      nav.show { display: flex; }
+
+      .hamburger { display: block; }
+    }
+
+    /* PAGE HEADER */
+    .page-header {
+      text-align: center;
+      padding: 80px 20px 20px;
+    }
+
+    .page-header h1 {
+      font-size: 3rem;
+      color: var(--accent);
+      text-shadow: 0 0 15px #00eaff80;
+    }
+
+    .page-header p {
+      margin-top: 10px;
+      color: #b8d8ff;
+      font-size: 1.2rem;
+    }
+
+    /* CONTACT WRAPPER */
+    .contact-box {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 50px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 40px;
+      background: var(--glass);
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 0 25px rgba(0,200,255,0.16);
+    }
+
+    .info h2 {
+      margin-bottom: 15px;
+      color: var(--accent);
+      font-size: 1.8rem;
+    }
+
+    .info p {
+      margin-bottom: 10px;
+      color: #d0e8ff;
+      line-height: 1.7;
+    }
+
+    /* FORM */
+    input, textarea {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      border: none;
+      color: white;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    input:focus, textarea:focus {
+      background: rgba(0,255,255,0.18);
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, var(--pink), var(--accent));
+      font-size: 1rem;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.06);
+      box-shadow: 0 0 15px var(--accent);
+    }
+
+    .map-box {
+      margin: 60px auto;
+      text-align: center;
+    }
+
+    .map-box iframe {
+      width: 90%;
+      height: 430px;
+      border-radius: 18px;
+      border: none;
+      box-shadow: 0 0 25px rgba(0,255,255,0.35);
+    }
+
+    footer {
+      margin-top: 50px;
+      padding: 30px;
+      background: #05060c;
+      color: #b0c8e0;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <!-- LEFT LOGO -->
+    <div class="logo-area">
+      <img src="data:image/jpeg;base64,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" alt="Logo">
+      <div class="logo-title">STACKLY ARCHITECH STUDIO</div>
+    </div>
+
+    <!-- MOBILE MENU ICON -->
+    <div class="hamburger"><i class="fa fa-bars"></i></div>
+
+    <!-- RIGHT SIDE NAV -->
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="why.html">Why Us</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <section class="page-header">
+    <h1>Contact Us</h1>
+    <p>We bring architectural dreams to life.</p>
+  </section>
+
+  <!-- CONTACT BOX -->
+  <section class="contact-box">
+    <div class="info">
+      <h2>Get in Touch</h2>
+      <p><strong>📍 Address:</strong> MMR Complex, Periyakollapatty, Chinna Thirupathi, Salem</p>
+      <p><strong>📞 Phone:</strong> +91 8056522920</p>
+      <p><strong>✉️ Email:</strong> stackly.architechstudio@gmail.com</p>
+      <p>Follow us on:
+        <br><br>
+        <a>Instagram</a> • 
+        <a>Facebook</a> • 
+        <a>LinkedIn</a> • 
+        <a>WhatsApp</a>
+      </p>
+    </div>
+
+    <div>
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <input type="text" placeholder="Subject">
+        <textarea rows="5" placeholder="Your Message"></textarea>
+        <button type="submit">Send Message 🚀</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="map-box">
+    <iframe src="https://www.google.com/maps?q=MMR%20Complex,%20Periyakollapatty,%20Salem&output=embed"></iframe>
+  </section>
+
+  <footer>
+    © 2025 STACKLY ARCHITECH STUDIO — All Rights Reserved
+  </footer>
+
+<script>
+document.querySelector(".hamburger").addEventListener("click", () => {
+  document.querySelector("nav").classList.toggle("show");
+});
+</script>
+
+</body>
+</html>

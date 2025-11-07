@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STACKLY ARCHITECH STUDIO | Login & Signup</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root {
+  --primary: #00bcd4;
+  --secondary: #6a11cb;
+  --gold: #facc15;
+  --white: #ffffff;
+  --dark: #0f0f1a;
+  --gray: #dcdcdc;
+  --glass: rgba(255, 255, 255, 0.08);
+  --blur: blur(25px);
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Outfit", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: radial-gradient(circle at top left, #111827, #000000);
+  overflow: hidden;
+}
+
+/* ===== BACKGROUND ANIMATION ===== */
+.bg-anim {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.bg-anim span {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: float 12s infinite ease-in-out alternate;
+}
+
+.bg-anim span:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
+.bg-anim span:nth-child(2) { bottom: 15%; right: 10%; animation-delay: 2s; }
+.bg-anim span:nth-child(3) { top: 30%; right: 30%; animation-delay: 4s; }
+
+@keyframes float {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-30px) scale(1.2); }
+}
+
+/* ===== MAIN CONTAINER ===== */
+.auth-container {
+  width: 850px;
+  height: 530px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0, 188, 212, 0.4);
+  display: flex;
+  z-index: 2;
+  position: relative;
+  transition: all 0.6s ease;
+}
+
+/* ===== LEFT PANEL ===== */
+.brand-panel {
+  flex: 1;
+  background: linear-gradient(160deg, rgba(0,188,212,0.15), rgba(250,204,21,0.15));
+  backdrop-filter: blur(15px);
+  color: var(--gold);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px;
+  position: relative;
+}
+
+.brand-panel h1 {
+  font-size: 2.2rem;
+  background: linear-gradient(90deg, var(--dark), var(--primary));
+  --webkit-background-clip: text;
+  
+}
+
+.brand-panel p {
+  color: var(--gray);
+  margin-top: 10px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.brand-panel img {
+  width: 160px;
+  margin-top: 30px;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 10px var(--gold));
+  transition: 0.6s;
+}
+
+.brand-panel img:hover {
+  transform: rotate(10deg) scale(1.1);
+}
+
+/* ===== RIGHT PANEL ===== */
+.auth-form {
+  flex: 1;
+  backdrop-filter: var(--blur);
+  background: rgba(255,255,255,0.03);
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  transition: 0.6s ease;
+}
+
+.auth-form h2 {
+  text-align: center;
+  color: var(--white);
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, var(--primary), var(--gold));
+  --webkit-background-clip: text;
+  
+}
+
+/* ===== INPUT FIELDS ===== */
+.field {
+  position: relative;
+  margin: 12px 0;
+}
+
+.field input {
+  width: 100%;
+  padding: 13px 45px 13px 15px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.12);
+  color: var(--white);
+  outline: none;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.field input:focus {
+  background: rgba(255,255,255,0.25);
+  box-shadow: 0 0 10px var(--primary);
+}
+
+.field i {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gold);
+}
+
+/* ===== BUTTONS ===== */
+.btn-main {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: var(--white);
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.btn-main:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--primary);
+}
+
+/* ===== SWITCH LINK ===== */
+.switch-note {
+  text-align: center;
+  color: var(--gray);
+  font-size: 0.9rem;
+  margin-top: 18px;
+}
+
+.switch-note span {
+  color: var(--gold);
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.switch-note span:hover {
+  text-shadow: 0 0 10px var(--gold);
+}
+
+/* ===== SLIDE EFFECT ===== */
+#form-signup {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  transition: all 0.6s ease;
+}
+
+.auth-container.signup-mode #form-signup {
+  left: 0;
+}
+.auth-container.signup-mode #form-login {
+  left: -100%;
+}
+
+/* ===== BACK BUTTON ===== */
+.btn-home {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-home:hover {
+  background: var(--gold);
+  color: var(--dark);
+  box-shadow: 0 0 10px var(--gold);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 850px) {
+  .auth-container {
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+  }
+  .auth-form {
+    padding: 30px 25px;
+  }
+  .brand-panel img { width: 120px; }
+  .brand-panel h1 { font-size: 1.7rem; }
+  .auth-form h2 { font-size: 1.5rem; }
+}
+</style>
+</head>
+
+<body>
+<!-- Animated Background -->
+<div class="bg-anim">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+<!-- Main Auth Container -->
+<div class="auth-container" id="authContainer">
+
+  <!-- Left Panel -->
+  <div class="brand-panel">
+    <h1>STACKLY ARCHITECH STUDIO</h1>
+    <p>Designing your vision into architectural brilliance.<br>Join our network of innovators.</p>
+    <img src="data:image/jpeg;base64,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" alt="Logo">
+  </div>
+
+  <!-- Login Form -->
+  <div class="auth-form" id="form-login">
+    <button class="btn-home" onclick="goHome()">🏠 Back to Home</button>
+    <h2>Welcome Back 👋</h2>
+    <div class="field">
+      <input type="email" placeholder="Email" required>
+      <i class="fa fa-envelope"></i>
+    </div>
+    <div class="field">
+      <input type="password" placeholder="Password" required>
+      <i class="fa fa-lock"></i>
+    </div>
+    <button class="btn-main">Login</button>
+    <p class="switch-note">Don’t have an account? <span id="switchSignup">Sign up</span></p>
+  </div>
+
+  <!-- Signup Form -->
+  <div class="auth-form" id="form-signup">
+    <button class="btn-home" onclick="goHome()">🏠 Back to Home</button>
+    <h2>Create Account ✨</h2>
+    <div class="field">
+      <input type="text" placeholder="Full Name" required>
+      <i class="fa fa-user"></i>
+    </div>
+    <div class="field">
+      <input type="email" placeholder="Email" required>
+      <i class="fa fa-envelope"></i>
+    </div>
+    <div class="field">
+      <input type="password" placeholder="Password" required>
+      <i class="fa fa-lock"></i>
+    </div>
+    <button class="btn-main">Sign Up</button>
+    <p class="switch-note">Already have an account? <span id="switchLogin">Login</span></p>
+  </div>
+</div>
+
+<script>
+const container = document.getElementById("authContainer");
+const loginBtn = document.querySelector("#form-login .btn-main");
+const signupBtn = document.querySelector("#form-signup .btn-main");
+
+document.getElementById("switchSignup").addEventListener("click", () => {
+  container.classList.add("signup-mode");
+});
+document.getElementById("switchLogin").addEventListener("click", () => {
+  container.classList.remove("signup-mode");
+});
+
+function goHome() {
+  window.location.href = "index.html";
+}
+
+// 🟡 Login validation
+loginBtn.addEventListener("click", () => {
+  const email = document.querySelector("#form-login input[type='email']").value.trim();
+  const password = document.querySelector("#form-login input[type='password']").value.trim();
+
+  if (!email || !password) {
+    showMessage("⚠️ Please fill in both Email and Password!");
+  } else {
+    showMessage("✅ Login successful (demo)!");
+  }
+});
+
+// 🟢 Signup validation
+signupBtn.addEventListener("click", () => {
+  const name = document.querySelector("#form-signup input[type='text']").value.trim();
+  const email = document.querySelector("#form-signup input[type='email']").value.trim();
+  const password = document.querySelector("#form-signup input[type='password']").value.trim();
+
+  if (!name || !email || !password) {
+    showMessage("⚠️ Please complete all fields to sign up!");
+  } else {
+    showMessage("✅ Signup successful (demo)!");
+  }
+});
+
+// 🧡 Message display function
+function showMessage(msg) {
+  let alertBox = document.createElement("div");
+  alertBox.textContent = msg;
+  alertBox.style.position = "fixed";
+  alertBox.style.bottom = "30px";
+  alertBox.style.left = "50%";
+  alertBox.style.transform = "translateX(-50%)";
+  alertBox.style.background = "rgba(0,0,0,0.8)";
+  alertBox.style.color = "white";
+  alertBox.style.padding = "12px 20px";
+  alertBox.style.borderRadius = "10px";
+  alertBox.style.fontSize = "1rem";
+  alertBox.style.zIndex = "9999";
+  alertBox.style.boxShadow = "0 0 15px #00bcd4";
+  document.body.appendChild(alertBox);
+
+  setTimeout(() => alertBox.remove(), 2500);
+}
+</script>
+
+</body>
+</html>
